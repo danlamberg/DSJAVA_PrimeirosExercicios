@@ -1,3 +1,4 @@
+package Ex3;
 /* Projete uma classe ContaBancaria que encapsule os atributos de uma conta, 
 como numeroConta, nomeTitular e saldo. Utilize modificadores de acesso para garantir o 
 encapsulamento e a segurança dos dados. Implemente métodos para depositar(valor), sacar(valor) e 

@@ -1,3 +1,4 @@
+package Ex1;
 public class Numero {
 
     private int valor;

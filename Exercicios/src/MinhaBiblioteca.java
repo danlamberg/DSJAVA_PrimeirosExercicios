@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-
 public class MinhaBiblioteca {
+    private static List<Livro> biblioteca = new ArrayList<>();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -17,7 +20,7 @@ public class MinhaBiblioteca {
                 System.out.println("Saindo...");
                 break;
             }
-            
+
             switch (opcao) {
                 case 1:
                     adicionarLivro(scanner);
@@ -29,33 +32,47 @@ public class MinhaBiblioteca {
                     System.out.println("Opção inválida.");
             }
         }
-        
+
         scanner.close();
     }
-    
+
     public static void adicionarLivro(Scanner scanner) {
         System.out.println("Digite o título do livro:");
         scanner.nextLine(); 
         String titulo = scanner.nextLine();
-        
+
         System.out.println("Digite o autor do livro:");
         String autor = scanner.nextLine();
-        
+
         System.out.println("Digite o ano de publicação do livro:");
         int anoPublicacao = scanner.nextInt();
-        
+
         Livro novoLivro = new Livro(titulo, autor, anoPublicacao);
+        biblioteca.add(novoLivro);
         System.out.println("Livro adicionado com sucesso.");
     }
-    
+
     public static void exibirInformacoesLivro(Scanner scanner) {
         System.out.println("Digite o título do livro que deseja exibir:");
         scanner.nextLine(); 
         String titulo = scanner.nextLine();
-        
-        System.out.println("Informações do livro " + titulo + ":");
-        System.out.println("Título: " + titulo);
-        System.out.println("Autor: Autor Desconhecido");
-        System.out.println("Ano de Publicação: 2022");
+
+        Livro livroEncontrado = encontrarLivroPorTitulo(titulo);
+
+        if (livroEncontrado != null) {
+            System.out.println("Informações do livro " + titulo + ":");
+            livroEncontrado.exibirInfo();
+        } else {
+            System.out.println("Livro não encontrado na biblioteca.");
+        }
+    }
+
+    public static Livro encontrarLivroPorTitulo(String titulo) {
+        for (Livro livro : biblioteca) {
+            if (livro.getTitulo().equals(titulo)) {
+                return livro;
+            }
+        }
+        return null;
     }
 }

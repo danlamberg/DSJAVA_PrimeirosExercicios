@@ -16,6 +16,20 @@ public class Jogo {
         System.out.println("Informe o nível do jogador (Níveis disponíveis: Fácil, Moderado, Desafiante, Difícil):");
         String nivel = scanner.nextLine();
 
+        // Modificação para aceitar "Difícil" com ou sem acento
+        if (nivel.equalsIgnoreCase("dificil") || nivel.equalsIgnoreCase("difícil")) {
+            nivel = "Difícil";
+        } else if (nivel.equalsIgnoreCase("desafiante")) {
+            nivel = "Desafiante";
+        } else if (nivel.equalsIgnoreCase("moderado")) {
+            nivel = "Moderado";
+        } else if (nivel.equalsIgnoreCase("fácil")) {
+            nivel = "Fácil";
+        } else {
+            System.out.println("Nível inválido. Definindo como Fácil por padrão.");
+            nivel = "Fácil";
+        }
+
         Jogador jogador = new Jogador(nome, pontuacao, nivel);
 
         System.out.println("Informações do jogador antes das atualizações: ");

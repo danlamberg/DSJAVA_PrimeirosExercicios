@@ -6,7 +6,7 @@ public class Calculadora {
         
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        do {
             System.out.println("Escolha a operação matemática que deseja realizar:");
             System.out.println("1 - Adição");
             System.out.println("2 - Subtração");
@@ -29,45 +29,37 @@ public class Calculadora {
             Numero num1 = new Numero();
             Numero num2 = new Numero();
             Numero res = new Numero();
-            String opc = "S";
             
-            while (opc.equalsIgnoreCase("s")) {
-                System.out.print("\nDigite o primeiro número: ");
-                num1.setValor(scanner.nextInt());
-    
-                System.out.print("Digite o segundo número: ");
-                num2.setValor(scanner.nextInt());
-    
-                switch (opcao) {
-                    case 1:
-                        res.setValor(num1.getValor() + num2.getValor());
-                        System.out.printf("O resultado da adição de %d e %d é igual a %d%n", num1.getValor(), num2.getValor(), res.getValor());
-                        break;
-                    case 2:
-                        res.setValor(num1.getValor() - num2.getValor());
-                        System.out.printf("O resultado da subtração de %d por %d é igual a %d%n", num1.getValor(), num2.getValor(), res.getValor());
-                        break;
-                    case 3:
-                        res.setValor(num1.getValor() * num2.getValor());
-                        System.out.printf("O resultado da multiplicação de %d por %d é igual a %d%n", num1.getValor(), num2.getValor(), res.getValor());
-                        break;
-                    case 4:
-                        if (num2.getValor() == 0) {
-                            System.out.println("Não é possível realizar a divisão por zero!");
-                            continue;
-                        }
-                        res.setValor(num1.getValor() / num2.getValor());
-                        System.out.printf("O resultado da divisão de %d por %d é igual a %d%n", num1.getValor(), num2.getValor(), res.getValor());
-                        break;
-                }
-                
-                System.out.print("\nDeseja realizar outra operação? (S/N): ");
-                opc = scanner.next();
+            System.out.print("\nDigite o primeiro número: ");
+            num1.setValor(scanner.nextInt());
+
+            System.out.print("Digite o segundo número: ");
+            num2.setValor(scanner.nextInt());
+
+            switch (opcao) {
+                case 1:
+                    res.setValor(num1.getValor() + num2.getValor());
+                    System.out.printf("O resultado da adição de %d e %d é igual a %d%n", num1.getValor(), num2.getValor(), res.getValor());
+                    break;
+                case 2:
+                    res.setValor(num1.getValor() - num2.getValor());
+                    System.out.printf("O resultado da subtração de %d por %d é igual a %d%n", num1.getValor(), num2.getValor(), res.getValor());
+                    break;
+                case 3:
+                    res.setValor(num1.getValor() * num2.getValor());
+                    System.out.printf("O resultado da multiplicação de %d por %d é igual a %d%n", num1.getValor(), num2.getValor(), res.getValor());
+                    break;
+                case 4:
+                    if (num2.getValor() == 0) {
+                        System.out.println("Não é possível realizar a divisão por zero!");
+                        continue;
+                    }
+                    res.setValor(num1.getValor() / num2.getValor());
+                    System.out.printf("O resultado da divisão de %d por %d é igual a %d%n", num1.getValor(), num2.getValor(), res.getValor());
+                    break;
             }
             
-            if (opc.equalsIgnoreCase("n")) {
-                break; // Sai do loop principal se o usuário escolher 'n'
-            }
-        }    
+            System.out.print("\nDeseja realizar outra operação? (S/N): ");
+        } while (scanner.next().equalsIgnoreCase("s"));
     }
 }

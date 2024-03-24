@@ -1,10 +1,4 @@
 package Ex3;
-/* Projete uma classe ContaBancaria que encapsule os atributos de uma conta, 
-como numeroConta, nomeTitular e saldo. Utilize modificadores de acesso para garantir o 
-encapsulamento e a segurança dos dados. Implemente métodos para depositar(valor), sacar(valor) e 
-um método que retorne o saldo atual da conta. Lembre-se de que cada operação deve 
-ajustar o saldo da conta de acordo com a transação realizada.” */
-
 
 public class ContaBancaria {
 
@@ -22,15 +16,24 @@ public class ContaBancaria {
         return numeroConta;
     }
 
-    public String getNomeConta(){
+    public String getNomeTitular(){
         return nomeTitular;
     }
 
     public Float getSaldo(){
         return saldo;
     }
+
+    public void sacar(float valor){
+        if(saldo >= valor){
+            saldo -= valor;
+        }else{
+            System.out.println("Saldo insuficiente!");
+        }
+    }
+
+    public void depositar(float valor) {
+        saldo += valor;
+        System.out.println("Depósito de " + valor + " realizado com sucesso. Novo saldo: " + saldo);
+    }
 }
-
-
-
-

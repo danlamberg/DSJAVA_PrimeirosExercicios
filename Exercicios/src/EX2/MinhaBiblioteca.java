@@ -13,6 +13,7 @@ public class MinhaBiblioteca {
             System.out.println("Escolha a operação:");
             System.out.println("1 - Adicionar Livro");
             System.out.println("2 - Exibir Informações de um Livro");
+            System.out.println("3 - Listar Todos os Livros");
             System.out.println("0 - Sair");
 
             int opcao = scanner.nextInt();
@@ -28,6 +29,9 @@ public class MinhaBiblioteca {
                     break;
                 case 2:
                     exibirInformacoesLivro(scanner);
+                    break;
+                case 3:
+                    listarLivros();
                     break;
                 default:
                     System.out.println("Opção inválida.");
@@ -54,17 +58,30 @@ public class MinhaBiblioteca {
     }
 
     public static void exibirInformacoesLivro(Scanner scanner) {
-        System.out.println("Digite o título do livro que deseja exibir:");
+        System.out.println("Digite o título do livro que deseja exibir (ou deixe em branco para cancelar):");
         scanner.nextLine(); 
         String titulo = scanner.nextLine();
 
-        Livro livroEncontrado = encontrarLivroPorTitulo(titulo);
+        if (!titulo.isEmpty()) {
+            Livro livroEncontrado = encontrarLivroPorTitulo(titulo);
 
-        if (livroEncontrado != null) {
-            System.out.println("Informações do livro " + titulo + ":");
-            livroEncontrado.exibirInfo();
+            if (livroEncontrado != null) {
+                System.out.println("Informações do livro " + titulo + ":");
+                livroEncontrado.exibirInfo();
+            } else {
+                System.out.println("Livro não encontrado na biblioteca.");
+            }
+        }
+    }
+
+    public static void listarLivros() {
+        if (biblioteca.isEmpty()) {
+            System.out.println("A biblioteca está vazia.");
         } else {
-            System.out.println("Livro não encontrado na biblioteca.");
+            System.out.println("Livros na biblioteca:");
+            for (Livro livro : biblioteca) {
+                System.out.println("- " + livro.getTitulo());
+            }
         }
     }
 

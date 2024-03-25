@@ -2,8 +2,6 @@ package Ex5;
 
 import java.util.Scanner;
 
-import java.util.Scanner;
-
 public class Condutor {
     public static void main(String[] args) {
         Scanner condutor = new Scanner(System.in);
@@ -56,6 +54,8 @@ public class Condutor {
 
         System.out.println("\nFreando o veículo...");
         carro.frear();
+
+        condutor.close();
     }
 }
 

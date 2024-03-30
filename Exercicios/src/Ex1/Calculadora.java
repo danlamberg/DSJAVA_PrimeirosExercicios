@@ -61,5 +61,7 @@ public class Calculadora {
             
             System.out.print("\nDeseja realizar outra operação? (S/N): ");
         } while (scanner.next().equalsIgnoreCase("s"));
+
+        scanner.close();
     }
 }
